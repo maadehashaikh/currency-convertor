@@ -1,13 +1,41 @@
-import { useState } from 'react'
-import './App.css'
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import LandingPage from "./LandingPage";
+import Destinations from "./Destinations";
+import Services from "./Services";
+import Contact from "./Contact";
 
-function App() {
+const App = () => {
   return (
-
     <>
-      <h1 className='text-3xl bg-green-400 text-white hover:bg-transparent hover:text-black 
-      py-4 left-4 text-lime-300  mx-5 left-8 bg-cyan-300 mr-auto'>Currency Convertor ! </h1>
-    </> 
-  )
-}
-export default App
+      <nav className="bg-gray-800 p-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-white text-2xl font-bold">TravelSite</h1>
+          <ul className="flex space-x-6 text-white">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/destinations">Destinations</Link>
+            </li>
+            <li>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/destinations" element={<Destinations />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
+  );
+};
+
+export default App;
